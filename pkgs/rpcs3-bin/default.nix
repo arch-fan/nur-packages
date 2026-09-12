@@ -27,7 +27,7 @@ let
     chmod +x rpcs3.AppImage
 
     ./rpcs3.AppImage --appimage-extract
-    mv AppDir $out
+    mv AppDir "$out"
   '';
 
   updateScript = writeShellApplication {
@@ -48,8 +48,16 @@ appimageTools.wrapAppImage {
 
   extraInstallCommands = ''
     install -Dm444 \
-      ${contents}/rpcs3.desktop \
+      ${contents}/usr/share/applications/rpcs3.desktop \
       $out/share/applications/rpcs3.desktop
+
+    cp -r \
+      ${contents}/usr/share/icons \
+      $out/share/
+
+    install -Dm444 \
+      ${contents}/usr/share/metainfo/rpcs3.metainfo.xml \
+      $out/share/metainfo/rpcs3.metainfo.xml
   '';
 
   passthru.updateScript = [
