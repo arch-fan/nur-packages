@@ -50,7 +50,8 @@ nothing extra.
 
 ## Updates
 
-A nightly workflow (`.github/workflows/update.yaml`, also manually dispatchable):
+A weekly workflow (`.github/workflows/update.yaml`, Mondays 00:00 UTC, also
+manually dispatchable):
 
 1. `nix flake update`: tracks nixos-unstable, so nixpkgs breakage surfaces here
    before NUR users hit it;
